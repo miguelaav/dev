@@ -4,6 +4,10 @@ Esta aplicación intenta cumplir con los requerimientos del test para desarrolla
 
 https://github.com/cornershop/backend-test
 
+##TODO
+
+Falta autenticacion o restriccion de pantalla home solo para nora ademas de testing
+
 ## Installation
 Python 3.7
 
@@ -29,7 +33,7 @@ python manage.py migrate
 python manage.py runserver
 
 ## Images
-![image](https://www.photobox.co.uk/my/photo/full?photo_id=501725122648)
+![image](https://github.com/miguelaav/dev/blob/master/reminder.png)
 
 
 ## License
