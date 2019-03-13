@@ -33,7 +33,22 @@ python manage.py migrate
 python manage.py runserver
 
 ## Images
+
+Ejemplo de envio del reminder al usuario
+
 ![image](https://github.com/miguelaav/dev/blob/master/reminder.png)
+
+Ejemplo de visualizacion de opciones del menu y opcion de envio de slack
+
+![image](https://github.com/miguelaav/dev/blob/master/demo_vistaslack.png)
+
+Ejemplo de respuesta cuando ya se ha respondido el menu
+
+![image](https://github.com/miguelaav/dev/blob/master/demo_peticion.png)
+
+
+
+
 
 
 ## License
