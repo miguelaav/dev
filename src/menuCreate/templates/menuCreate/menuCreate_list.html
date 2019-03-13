@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{ context }}
+<h1>Create Menu for specific day</h1> 
+<ul>
+{% for obj in object_list %}
+
+	<li>Opcion: Menu de fecha {{ obj.date }} <form method="POST" action="{% url 'deletemenucreate' obj.id %}" name="form{{forloop.counter}}"> {% csrf_token %} {<a href="#" onclick="document.form{{forloop.counter}}.submit();">eliminar</a>} </form> 
+{% endfor %}
+</ul>
+
+<h5><a href="/menuCreate/create">Crear Menu</a> | Agregar opciones de menu</h5>
+{% endblock %}

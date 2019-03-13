@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+{% if querysetMenuResponse %}
+	<h1>YA HAS SOLICITADO TU MENU :)</h1>
+{% else %}
+<h1>Select your menu</h1>
+<form method='POST'> {% csrf_token %}
+	<input type="text" id="userName" readonly name="userName" value="{{userName}}">
+	<select id="optionId" name="optionId">
+		<option value="0">Seleccione Menu</option>
+		{% for option in  querysetMenu %}
+			<option value="{{option.id}}" > {{option.description}} </option>
+		{% endfor %}
+	</select>
+	{{form|crispy }}
+	<button type='submit'>Guardar</button>
+	<input type="hidden" value="{{ menuCreateId }}" name="menuCreateId" id="menuCreateId">
+	
+</form>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+{{ object_list }}
+<h1>Create Menu Options</h1>
+<form method='POST'> {% csrf_token %}
+	{{form|crispy }}
+	<button type='submit'>Guardar</button>
+	<input type="hidden" value="{{ menuCreateId }}" name="menuCreateId" id="menuCreateId">
+</form>
+
+{% endblock %}
