@@ -1,28 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-{{ test }}
 
-<h1>Menu Orders</h1> 
-Por favor selecciona el dia del menu: 
-<form  name="formMenuCreate" method="POST" action="{% url 'home' %}"> {% csrf_token %}
-	<select id="selectMenuCreate" name="selectMenuCreate">
-		<option value="0" {% if '0' == menuCreateId %} selected {% endif %}>Seleccione</option>
-		{% for menu in menuCreate %}
-		<option {% if menu.id|stringformat:"s" == menuCreateId|stringformat:"s" %} selected {% endif %} value="{{menu.id}}">{{menu.date}}</option>
-		{% endfor %}
-	</select>
-	<button type="submit">submit</button>
-</form>
-{% if object_list and menuCreateId != '0' %}
-<h1>Estos son los pedidos hasta el momento</h1>
-<ul>
-	
-{% for obj in object_list %}
-	<li>Usuario: {{ obj.userName }} - Menu: {{obj.option__description }} <br> {{obj.comments}}</li>
-	<p></p>
-{% endfor %}
-</ul>
+{% if user.is_authenticated %}
+	<h1>Menu Orders</h1> 
+	Por favor selecciona el dia del menu: 
+	<form  name="formMenuCreate" method="POST" action="{% url 'home' %}"> {% csrf_token %}
+		<select id="selectMenuCreate" name="selectMenuCreate">
+			<option value="0" {% if '0' == menuCreateId %} selected {% endif %}>Seleccione</option>
+			{% for menu in menuCreate %}
+			<option {% if menu.id|stringformat:"s" == menuCreateId|stringformat:"s" %} selected {% endif %} value="{{menu.id}}">{{menu.date}}</option>
+			{% endfor %}
+		</select>
+		<button type="submit">submit</button>
+	</form>
+	{% if object_list and menuCreateId != '0' %}
+		<h1>Estos son los pedidos hasta el momento</h1>
+		<ul>
+			
+			{% for obj in object_list %}
+			<li>Usuario: {{ obj.userName }} - Menu: {{obj.option__description }} <br> {{obj.comments}}</li>
+			<p></p>
+			{% endfor %}
+		</ul>
+	{% endif %}
+{% else %}
+	<p>You are not nora, pls log in</p>
+	<a href="{% url 'login' %}">login</a>
 {% endif %}
 
 {% endblock %}

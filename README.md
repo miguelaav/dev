@@ -6,7 +6,7 @@ https://github.com/cornershop/backend-test
 
 ##TODO
 
-Falta autenticacion o restriccion de pantalla home solo para nora ademas de testing
+Falta testing
 
 ## Installation
 Python 3.7
@@ -32,6 +32,14 @@ python manage.py migrate
 
 python manage.py runserver
 
+## Creating nora user
+
+Browse the following url to create "nora" user in database
+
+http://localhost:8000/createuser/
+
+This will create user nora with 1234 as the password.
+
 ## Images
 
 Ejemplo de envio del reminder al usuario
@@ -45,6 +53,10 @@ Ejemplo de visualizacion de opciones del menu y opcion de envio de slack
 Ejemplo de respuesta cuando ya se ha respondido el menu
 
 ![image](https://github.com/miguelaav/dev/blob/master/demo_peticion.png)
+
+Creacion de usuario sin usar admin
+
+![image](https://github.com/miguelaav/dev/blob/master/createuser.png)
 
 
 

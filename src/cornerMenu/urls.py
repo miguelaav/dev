@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url,include 
 #from django.urls import  path
 from django.contrib import admin
 
@@ -21,12 +21,13 @@ from home.views import (HomeView)
 from menu.views import (MenuCreateView,MenuListView,MenuDelete,MenuUpdateView,SendToSlack)
 from menuCreate.views import (MenuCreateList,MenuCreateRegister,MenuCreateDelete)
 from menuResponse.views import (MenuResponseRegister)
+from createUserNora.views import (CreateUserView)
 
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
     url(r'^home/', HomeView.as_view(), name='home'),
-
+    url(r'^createuser/', CreateUserView.as_view(), name='createuser'),
     url(r'^$', HomeView.as_view()),
 
     url(r'^menu/create/', MenuCreateView.as_view(), name="menucreate"),    
@@ -42,4 +43,6 @@ urlpatterns = [
     url(r'^menuResponse/menu/(?P<id>[0-9a-f-]+)/(?P<user>[a-zA-Z0-9!@#$&()=]+)/$', MenuResponseRegister.as_view(), name="menuresponsecreate"),
 
     url(r'^menu/SendToSlack/(?P<id>[0-9a-f-]+)/$', SendToSlack.as_view(), name='sendtoslack'),
+
+    url(r'^accounts/', include('django.contrib.auth.urls')),
 ]
